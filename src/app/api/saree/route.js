@@ -1,8 +1,7 @@
 import { connectDB } from "@/lib/mongodb";
 import Saree from "@/models/saree";
 import { NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
-import path from "path";
+import { supabase } from "@/Auth/supabase";
 
 // GET – fetch all sarees
 export async function GET(req) {
@@ -30,43 +29,73 @@ export async function GET(req) {
 
 // POST – add saree
 export async function POST(req) {
-    await connectDB();
+    try {
+        await connectDB();
 
-    const formData = await req.formData();
+        const formData = await req.formData();
 
-    const image = formData.get("image");
-    const name = formData.get("name");
-    const desc = formData.get("desc");
-    const discount = Number(formData.get("discount"));
-    const price = Number(formData.get("price"));
-    const category = formData.get("category");
+        const image = formData.get("image");
+        const name = formData.get("name");
+        const desc = formData.get("desc");
+        const discount = Number(formData.get("discount"));
+        const price = Number(formData.get("price"));
+        const category = formData.get("category");
 
-    if (!image) {
-        return NextResponse.json({ error: "No image uploaded" }, { status: 400 });
+        if (!image || typeof image === "string") {
+            return NextResponse.json(
+                { error: "No image uploaded" },
+                { status: 400 }
+            );
+        }
+
+        // 🔁 Convert image to buffer
+        const bytes = await image.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+
+        // 🔥 Upload to Supabase Storage
+        const fileExt = image.name.split(".").pop();
+        const fileName = `uploads/saree-${Date.now()}.${fileExt}`;
+
+        const { error: uploadError } = await supabase.storage
+            .from("uploads")
+            .upload(fileName, buffer, {
+                contentType: image.type,
+                upsert: false,
+            });
+
+        if (uploadError) {
+            console.error(uploadError);
+            return NextResponse.json(
+                { error: "Image upload failed" },
+                { status: 500 }
+            );
+        }
+
+        // 🌐 Get public URL
+        const { data } = supabase.storage
+            .from("uploads")
+            .getPublicUrl(fileName);
+
+        const imageUrl = data.publicUrl;
+
+        // 💾 Save to MongoDB
+        const saree = await Saree.create({
+            name,
+            desc,
+            discount,
+            price,
+            category,
+            image: imageUrl, // ✅ store URL
+        });
+
+        return NextResponse.json(saree);
+    } catch (err) {
+        console.error(err);
+        return NextResponse.json(
+            { error: "Something went wrong" },
+            { status: 500 }
+        );
     }
-
-    // Create unique filename
-    const bytes = await image.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    const fileName = `saree-${Date.now()}-${image.name}`;
-    const uploadPath = path.join(process.cwd(), "public/uploads", fileName);
-
-    await writeFile(uploadPath, buffer);
-
-    const imagePath = `/uploads/${fileName}`;
-
-    // Save to MongoDB
-    const saree = await Saree.create({
-        name,
-        desc,
-        discount,
-        price,
-        category,
-        image: imagePath,
-    });
-
-    return NextResponse.json(saree);
 }
 
 // PUT – update saree
@@ -84,3 +113,4 @@ export async function DELETE(req) {
     await Saree.findByIdAndDelete(id);
     return NextResponse.json({ success: true });
 }
+
