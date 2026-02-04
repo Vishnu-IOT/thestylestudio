@@ -1,0 +1,469 @@
+/* Admin container */
+.admin-container {
+    /* max-width: 1200px; */
+    /* margin: auto; */
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+}
+
+.title-main {
+    display: flex;
+    justify-content: center;
+    padding: 0px 50px;
+}
+
+.title-container {
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    background: #8b1e3f;
+}
+
+/* Title */
+.admin-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-title2 {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.admin-desc {
+    padding-top: 10px;
+    text-align: center;
+    color: #878585;
+    font-style: italic;
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+    gap: 15px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 40%;
+
+}
+
+.form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 40%;
+
+}
+
+.add-btn {
+    grid-column: span 2;
+    padding: 12px;
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.add-btn:hover {
+    background: #157347;
+}
+
+/* Saree list */
+.saree-list {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Saree card */
+.saree-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.saree-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.saree-card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.price-span {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 8px;
+}
+
+.saree-card p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+.saree-card span {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: red;
+}
+
+/* category */
+
+.category-list {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.update-btn {
+    flex: 1;
+    padding: 8px;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-btn:hover {
+    background: #0b5ed7;
+}
+
+.delete-btn {
+    flex: 1;
+    padding: 8px;
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #bb2d3b;
+}
+
+/* ===== Modal Overlay ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* ===== Modal Box ===== */
+.modal {
+    background: #fff;
+    padding: 24px;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.modal h2 {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+/* Inputs */
+.modal input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.save-btn {
+    grid-column: span 2;
+    padding: 12px;
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    width: 50%;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.page-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #e5e7eb;
+    color: #111827;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.page-btn:hover {
+    background: #111827;
+    color: #fff;
+}
+
+.page-btn.active {
+    background: #111827;
+    color: #fff;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.loom-add-btn {
+    flex: 1;
+    padding: 8px;
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Loom toggle button */
+.loom-toggle-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Active state */
+.loom-toggle-btn.active {
+    background: #dc3545;
+    /* red */
+    color: #fff;
+}
+
+.loom-toggle-btn.active:hover {
+    background: #bb2d3b;
+}
+
+/* Inactive state */
+.loom-toggle-btn.inactive {
+    background: #198754;
+    /* green */
+    color: #fff;
+}
+
+.loom-toggle-btn.inactive:hover {
+    background: #157347;
+}
+
+/* ========================= */
+/* 📱 Mobile Responsive CSS */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    /* Container padding */
+    .admin-container {
+        padding: 16px;
+    }
+
+    /* Title container */
+    .title-container {
+        padding: 14px;
+        margin-bottom: 20px;
+    }
+
+    .admin-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* Form layout */
+    .form {
+        gap: 12px;
+    }
+
+    .form input,
+    .form select {
+        width: 100%;
+    }
+
+    .add-btn {
+        width: 100%;
+    }
+
+    /* Saree grid → single column */
+    .saree-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Card image */
+    .saree-card img {
+        height: 180px;
+    }
+
+    .category-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Action buttons stack */
+    .actions {
+        flex-direction: column;
+    }
+
+    .update-btn,
+    .delete-btn,
+    .loom-add-btn {
+        width: 100%;
+    }
+
+    /* Modal */
+    .modal {
+        width: 95%;
+        padding: 18px;
+    }
+
+    .modal h2 {
+        font-size: 18px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .save-btn,
+    .delete-btn {
+        width: 100%;
+    }
+
+    /* Pagination smaller */
+    .pagination {
+        gap: 6px;
+    }
+
+    .page-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+}
+
+/* ========================= */
+/* 📱 Extra Small Devices */
+/* ========================= */
+
+@media (max-width: 480px) {
+
+    .admin-title {
+        font-size: 18px;
+    }
+
+    .title-main {
+        padding: 0;
+    }
+
+    .saree-list {
+        padding: 0;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .category-list {
+        padding: 0;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .saree-card h3 {
+        font-size: 12px;
+    }
+
+    .saree-card p {
+        font-size: 12px;
+    }
+
+    .saree-card span {
+        font-size: 12px;
+    }
+
+
+    .page-btn {
+        width: 28px;
+        height: 28px;
+    }
+}

@@ -1,0 +1,321 @@
+/* Login Component */
+
+.login-wrapper {
+    display: flex;
+    height: 80vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    background-color: var(--bg-dark);
+    display: flex;
+    /* gap: 20px; */
+    border-radius: 30px;
+    box-shadow: 0 12px 25px rgba(91, 134, 229, 0.5);
+    width: 60%;
+    height: 75vh;
+    /* font-family: "Playfair Display", serif; */
+    font-weight: 400;
+    padding: 4px;
+}
+
+.Message-box {
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    color: white;
+    border-radius: 26px;
+    /* font-family: "Roboto", sans-serif; */
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+    /* margin-top: 10px;
+    margin-left: 8px; */
+}
+
+.logging-box {
+    /* border-style: dashed; */
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .arrow{
+    position: fixed;
+} */
+
+.main-content {
+    font-family: "Playfair Display", serif;
+    /* padding: 1px; */
+    font-weight: 400;
+    font-size: 40px;
+}
+
+.main-content-login {
+    font-family: "Playfair Display", serif;
+    padding: 6px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    /* border: 1px solid #3638af; */
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.Registerbox-box {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+    color: white;
+    border-radius: 26px;
+    /* font-family: "Roboto", sans-serif; */
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+}
+
+.signup {
+    background: linear-gradient(135deg, #11998e, #38ef7d) !important;
+}
+
+.h3 {
+    color: #3a3a3a;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    /* font-family: "Roboto", sans-serif; */
+    font-weight: 600;
+}
+
+.account {
+    /* font-family: "Playfair Display", serif; */
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.mobilelogin {
+    /* border-style: dashed; */
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.main-content-login.active,
+.main-content-login:hover {
+    color: white;
+    background-color: rgb(92, 92, 193);
+    cursor: pointer;
+}
+
+.login-form {
+    /* border-style: dashed; */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    /* font-family: "Lato", sans-serif; */
+    font-weight: 700;
+    gap: 20px;
+    height: 90%;
+    width: 80%;
+    /* padding: 40px 20px; */
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding: 80px 50px; */
+    gap: 30px;
+    /* height:100%; */
+    /* width: 100%; */
+    /* padding: 40px 20px; */
+}
+
+.left {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* padding: 80px 50px; */
+    gap: 10px;
+    height: 10%;
+    /* height: 65vh; */
+    width: 100%;
+    /* padding: 40px 20px; */
+}
+
+.login-input {
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #426a6e;
+    font-weight: 100;
+    font-size: 15px;
+    width: 46%;
+    height: 100%;
+    color: var(--text-white);
+    border-radius: 40px;
+    padding: 0px 10px;
+}
+
+.login-inputs {
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #426a6e;
+    font-weight: 100;
+    font-size: 15px;
+    width: 95%;
+    height: 10%;
+    color: var(--text-white);
+    border-radius: 40px;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.login-select {
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #426a6e;
+    font-weight: 100;
+    font-size: 15px;
+    width: 94%;
+    height: 10%;
+    color: var(--text-white);
+    border-radius: 40px;
+    padding: 8px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.forgot-password {
+    width: 90%;
+    text-align: end;
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: -20px;
+    /* border-style: dashed; */
+}
+
+.login-input::placeholder,
+.login-inputs::placeholder {
+    color: #828383;
+}
+
+.login-input:first-of-type,
+.login-inputs:first-of-type {
+    margin-top: 0;
+}
+
+.login-btn,
+.signup {
+    /* margin-top: 1.75rem; */
+    color: rgb(47, 47, 47);
+    border: none;
+    outline: none;
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0px 10px;
+    width: 95%;
+    height: 10%;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+}
+
+.login-btn:hover,
+.signup:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Mobile Responsive Design */
+
+/* Tablets & Medium Screens (≤768px) */
+@media (max-width: 768px) {
+
+    /* Login Box */
+    .login-box {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .Message-box,
+    .Registerbox-box {
+        padding: 50px 30px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .login-btn,
+    .signup {
+        width: 100%;
+    }
+}
+
+/* Small Phones (≤480px) */
+@media (max-width: 480px) {
+
+    /* Login */
+    .login-box {
+        /* align-items: center; */
+        /* justify-content: center; */
+        width: 75%;
+        height: 50%;
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .Message-box,
+    .Registerbox-box {
+        /* border-style: dashed; */
+        display: none;
+        padding: 40px 20px;
+        font-size: 14px;
+    }
+
+    .login-form {
+        /* border-style: dashed; */
+        width: 100%;
+        height: 100%;
+    }
+
+    .logging-box {
+        /* border-style: dashed; */
+        width: 100%;
+        height: 100%;
+    }
+
+    .main-content {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .account {
+        font-size: 12px;
+    }
+
+    .login-btn,
+    .signup {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+}
