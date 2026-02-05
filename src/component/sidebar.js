@@ -73,13 +73,18 @@ export default function Sidebar() {
                                 <HiCube className="icon" />
                                 <span onClick={() => setMenuOpen(!menuOpen)}>Add Category</span>
                             </Link>
-                            <Link href="/active" className="submenu-item" >
-                                <VscLayersActive className="icon" />
-                                <span onClick={() => setMenuOpen(!menuOpen)}>Active/Inactive</span>
-                            </Link>
+                            // <Link href="/active" className="submenu-item" >
+                            //     <VscLayersActive className="icon" />
+                            //     <span onClick={() => setMenuOpen(!menuOpen)}>Active/Inactive</span>
+                            // </Link>
                         </div>
                     )}
 
+                    <Link href="/active" className="nav-item" >
+                        <VscLayersActive className="icon" />
+                        {menuOpen && <span onClick={() => setMenuOpen(!menuOpen)}>Active/Inactive</span>}
+                    </Link>
+                        
                     <Link href="/loom" className="nav-item">
                         <HiShoppingCart className="icon" />
                         {menuOpen && <span onClick={() => setMenuOpen(!menuOpen)}>Add Loom</span>}
@@ -99,3 +104,4 @@ export default function Sidebar() {
         </>
     );
 }
+
