@@ -8,14 +8,18 @@ import {
 } from "react-icons/fa";
 import Breadcrumb from "@/component/breadcrumb";
 import { useRouter } from "next/navigation";
+import Loader from '@/component/loader';
 
 export default function LoomAdminPage() {
     const router = useRouter();
     const [sarees, setSarees] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const fetchSarees = async () => {
+        setLoading(true);
         const res = await fetch("/api/loom");
         setSarees(await res.json());
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -58,6 +62,10 @@ export default function LoomAdminPage() {
             </div>
             <h1 className="admin-title2">🔥 Trending in Loom</h1>
             <p className="admin-desc">Most popular sarees from the loom collection.</p>
+
+            {loading ? (
+                <Loader />
+            ) : (
             <div className="saree-list">
                 {sarees.filter((s) => s.loom).map((s) => (
                     <div className="saree-card" key={s._id}>
@@ -82,6 +90,7 @@ export default function LoomAdminPage() {
                     </div>
                 ))}
             </div>
+            )}
             <h1 className="admin-title2">🧺 Classic Sarees</h1>
             <p className="admin-desc">Everyday sarees beyond the highlighted loom picks.</p>
             <div className="saree-list">
@@ -110,3 +119,4 @@ export default function LoomAdminPage() {
         </div>
     );
 }
+
