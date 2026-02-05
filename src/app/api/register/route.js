@@ -13,7 +13,7 @@ export async function POST(req) {
         }
 
         const decoded = await admin.auth().verifyIdToken(token);
-        const { name, email, phonenumber, admin } = await req.json();
+        const { name, email, phonenumber, admins } = await req.json();
 
         // Check duplicate
         const exists = await Register.findOne(
@@ -36,7 +36,7 @@ export async function POST(req) {
             email,
             phonenumber: phonenumber,
             emailverified: decoded.email_verified,
-            admin: admin,
+            admin: admins,
         });
 
         return NextResponse.json({ success: true, user });
@@ -48,4 +48,5 @@ export async function POST(req) {
         );
     }
 }
+
 
