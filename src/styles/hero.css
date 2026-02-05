@@ -39,6 +39,16 @@
     font-style: italic;
 }
 
+/* Lottie json Loader */
+.loader-container {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+}
+
 /* Form */
 .form {
     display: flex;
@@ -466,4 +476,5 @@
         width: 28px;
         height: 28px;
     }
+
 }
