@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import '../styles/hero.css';
 import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
 import Breadcrumb from "./breadcrumb";
-import loaderAnimation from '../lottie/loader.json';
-import Lottie from "react-lottie";
+import Loader from '@/component/loader';
 
 export default function AdminPage() {
     const [sarees, setSarees] = useState([]);
@@ -62,18 +61,8 @@ export default function AdminPage() {
         fetchSarees();
     };
 
-    const disper = (dis, price) => {
-        const remain = 100 - dis;
-        return Math.round(price * (remain / 100));
-    }
-    
-    const loaderOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: loaderAnimation,
-        rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
-        },
+    const finalPrice = (discount, price) => {
+        return Math.round(price * ((100 - discount) / 100));
     };
     
     return (
@@ -88,14 +77,7 @@ export default function AdminPage() {
             <p className="admin-desc">Make quick changes to saree details and manage your catalog efficiently.</p>
 
         {loading ? (
-                <div className="loader-container">
-                    <Lottie
-                        options={loaderOptions}
-                        height={200}
-                        width={200}
-                    />
-                    <p>Loading sarees...</p>
-                </div>
+                 <Loader />
             ) : (
             <div className="saree-list">
                 {sarees.map(s => (
@@ -104,7 +86,7 @@ export default function AdminPage() {
                         <h3>{s.name}</h3>
 
                         <div className="price-span">
-                            <p>₹{disper(s.discount, s.price)}</p>
+                            <p>₹{finalPrice(s.discount, s.price)}</p>
                             <span className="strike">₹{s.price}</span>
                             <span>{s.discount}% OFF</span>
                         </div>
@@ -225,4 +207,5 @@ export default function AdminPage() {
         </div>
     );
 }
+
 
