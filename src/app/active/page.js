@@ -4,14 +4,18 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/hero.css';
 import Breadcrumb from '@/component/breadcrumb';
 import { useRouter } from 'next/navigation';
+import Loader from '@/component/loader';
 
 function Page() {
     const router = useRouter();
     const [sarees, setSarees] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const fetchSarees = async () => {
+        setLoading(true);
         const res = await fetch("/api/loom");
         setSarees(await res.json());
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -56,6 +60,10 @@ function Page() {
             </div>
             <h1 className="admin-title2">🔄 Saree Availability</h1>
             <p className="admin-desc">Toggle sarees between active and inactive states.</p>
+
+            {loading ? (
+                <Loader />
+            ) : (
             <div className="saree-list">
                 {sarees.map((s) => (
                     <div className="saree-card" key={s._id}>
@@ -79,8 +87,10 @@ function Page() {
                     </div>
                 ))}
             </div>
+            )}
         </div>
     )
 }
 
 export default Page
+
