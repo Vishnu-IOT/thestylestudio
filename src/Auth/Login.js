@@ -37,6 +37,7 @@ const Login = () => {
             const token = await userCred.user.getIdToken();
 
             if (userCred.user.emailVerified) {
+                try {
                 const data = await axios.post(`/api/login`,
                         { uid: userCred.user.uid, email: userCred.user.email, emailVerified: auth.currentUser.emailVerified },
                         {
@@ -278,4 +279,5 @@ const Login = () => {
 }
 
 export default Login
+
 
