@@ -99,7 +99,7 @@ const Login = () => {
 
 
             await axios.post(`/api/register`,
-                { name: name, email: email, phonenumber: number, uid: userCred.user.uid, emailverified: false },
+                { name: name, email: email, phonenumber: number, uid: userCred.user.uid, emailverified: false, admin: "ADMIN" },
                 {
                     headers: {
                         Authorization: token
@@ -279,5 +279,6 @@ const Login = () => {
 }
 
 export default Login
+
 
 
