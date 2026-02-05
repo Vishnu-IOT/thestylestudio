@@ -37,27 +37,31 @@ const Login = () => {
             const token = await userCred.user.getIdToken();
 
             if (userCred.user.emailVerified) {
-                await axios.post(`/api/login`,
-                    { uid: userCred.user.uid, email: userCred.user.email, emailVerified: auth.currentUser.emailVerified },
-                    {
-                        headers: {
-                            Authorization: token
+                const data = await axios.post(`/api/login`,
+                        { uid: userCred.user.uid, email: userCred.user.email, emailVerified: auth.currentUser.emailVerified },
+                        {
+                            headers: {
+                                Authorization: token
+                            }
                         }
-                    }
-                )
-                    .then((data) => {
-                        console.log(data);
-                        // console.log(data.data.datas[0]);
+                    );
+
+                    // cookies to auth
+                    if (data.data.datas[0].admin === "ADMIN") {
                         alert("Enjoy Shopping!");
-                        // cookies to auth
                         document.cookie = "auth=true; path=/;";
                         router.replace("/home");
-                    })
-                    .catch((err) => { alert("Error in Login") })
-                return;
+                    }
+                    else{
+                        alert("Please Login With Admin Credentials!");
+                    }
+                }
+                catch (error) {
+                    alert("Error in Login");
+                }
             }
             else {
-                alert("Please Verify Your Email!")
+                alert("Please Verify Your Email!");
             }
         }
 
@@ -274,3 +278,4 @@ const Login = () => {
 }
 
 export default Login
+
