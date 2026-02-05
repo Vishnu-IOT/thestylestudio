@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/hero.css';
 import Breadcrumb from '@/component/breadcrumb';
+import { useRouter } from 'next/navigation';
 
 function Page() {
+    const router = useRouter();
     const [sarees, setSarees] = useState([]);
 
     const fetchSarees = async () => {
@@ -14,6 +16,14 @@ function Page() {
 
     useEffect(() => {
         fetchSarees();
+    }, []);
+
+    // Check user if Logged In or Not
+    useEffect(() => {
+        const isAuth = document.cookie.includes("auth=true");
+        if (!isAuth) {
+            router.replace("/");
+        }
     }, []);
 
     // active / inactive Sarees

@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/hero.css';
 import Breadcrumb from '@/component/breadcrumb';
+import { useRouter } from 'next/navigation';
 
 function Page() {
+    const router = useRouter();
     const [imageFile, setImageFile] = useState(null);
     const [form, setForm] = useState({
         name: "",
@@ -14,6 +16,14 @@ function Page() {
         category: ""
     });
     const [category, setCategory] = useState([]);
+
+    // Check user if Logged In or Not
+    useEffect(() => {
+        const isAuth = document.cookie.includes("auth=true");
+        if (!isAuth) {
+            router.replace("/");
+        }
+    }, []);
 
     const addSaree = async () => {
         const formData = new FormData();
@@ -29,7 +39,7 @@ function Page() {
             method: "POST",
             body: formData,
         });
-
+        alert("New Saree is added to the Collections!")
         setForm({ name: "", desc: "", discount: "", price: "", category: "" });
         setImageFile(null);
     };

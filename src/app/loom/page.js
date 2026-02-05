@@ -7,8 +7,10 @@ import {
     FaRegArrowAltCircleRight,
 } from "react-icons/fa";
 import Breadcrumb from "@/component/breadcrumb";
+import { useRouter } from "next/navigation";
 
 export default function LoomAdminPage() {
+    const router = useRouter();
     const [sarees, setSarees] = useState([]);
 
     const fetchSarees = async () => {
@@ -18,6 +20,14 @@ export default function LoomAdminPage() {
 
     useEffect(() => {
         fetchSarees();
+    }, []);
+
+    // Check user if Logged In or Not
+    useEffect(() => {
+        const isAuth = document.cookie.includes("auth=true");
+        if (!isAuth) {
+            router.replace("/");
+        }
     }, []);
 
     // add / remove loom

@@ -46,9 +46,12 @@ const Login = () => {
                     }
                 )
                     .then((data) => {
+                        console.log(data);
                         // console.log(data.data.datas[0]);
                         alert("Enjoy Shopping!");
-                        router.push("/home");
+                        // cookies to auth
+                        document.cookie = "auth=true; path=/;";
+                        router.replace("/home");
                     })
                     .catch((err) => { alert("Error in Login") })
                 return;

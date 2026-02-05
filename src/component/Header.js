@@ -22,7 +22,7 @@ const Header = () => {
   const router = useRouter();
 
   const logout = async () => {
-    await signOut(auth);
+    document.cookie = "auth=; Max-Age=0; path=/;";
     router.replace("/");
   };
 

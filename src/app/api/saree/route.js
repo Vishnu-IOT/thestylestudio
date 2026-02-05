@@ -1,6 +1,8 @@
 import { connectDB } from "@/lib/mongodb";
 import Saree from "@/models/saree";
 import { NextResponse } from "next/server";
+import { writeFile } from "fs/promises";
+import path from "path";
 import { supabase } from "@/Auth/supabase";
 
 // GET – fetch all sarees
@@ -113,4 +115,3 @@ export async function DELETE(req) {
     await Saree.findByIdAndDelete(id);
     return NextResponse.json({ success: true });
 }
-
