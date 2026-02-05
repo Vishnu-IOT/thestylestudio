@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import '../styles/hero.css';
 import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
 import Breadcrumb from "./breadcrumb";
+import loaderAnimation from '../lottie/loader.json';
+import Lottie from "react-lottie";
 
 export default function AdminPage() {
     const [sarees, setSarees] = useState([]);
+     const [loading, setLoading] = useState(true);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editForm, setEditForm] = useState({
@@ -23,12 +26,14 @@ export default function AdminPage() {
 
 
     const fetchSarees = async (pageNumber = 1) => {
+        setLoading(true);
         const res = await fetch(`/api/saree?page=${pageNumber}&limit=8`);
         const data = await res.json();
 
         setSarees(data.sarees);
         setTotalPages(data.totalPages);
         setPage(data.currentPage);
+        setLoading(false);
     };
 
 
@@ -61,7 +66,16 @@ export default function AdminPage() {
         const remain = 100 - dis;
         return Math.round(price * (remain / 100));
     }
-
+    
+    const loaderOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: loaderAnimation,
+        rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+        },
+    };
+    
     return (
         <div className="admin-container">
             <div className="title-main">
@@ -72,6 +86,17 @@ export default function AdminPage() {
             </div>
             <h1 className="admin-title2">✏️ Edit Saree Details</h1>
             <p className="admin-desc">Make quick changes to saree details and manage your catalog efficiently.</p>
+
+        {loading ? (
+                <div className="loader-container">
+                    <Lottie
+                        options={loaderOptions}
+                        height={200}
+                        width={200}
+                    />
+                    <p>Loading sarees...</p>
+                </div>
+            ) : (
             <div className="saree-list">
                 {sarees.map(s => (
                     <div className="saree-card" key={s._id}>
@@ -108,6 +133,7 @@ export default function AdminPage() {
                     </div>
                 ))}
             </div>
+         )}
 
             {isModalOpen && (
                 <div className="modal-overlay">
@@ -199,3 +225,4 @@ export default function AdminPage() {
         </div>
     );
 }
+
