@@ -20,6 +20,7 @@ function Loader() {
                 options={loaderOptions}
                 height={200}
                 width={200}
+                speed={2.5}
             />
             <p>Loading sarees...</p>
         </div>
@@ -27,3 +28,4 @@ function Loader() {
 }
 
 export default Loader
+
