@@ -73,10 +73,10 @@ export default function Sidebar() {
                                 <HiCube className="icon" />
                                 <span onClick={() => setMenuOpen(!menuOpen)}>Add Category</span>
                             </Link>
-                            // <Link href="/active" className="submenu-item" >
-                            //     <VscLayersActive className="icon" />
-                            //     <span onClick={() => setMenuOpen(!menuOpen)}>Active/Inactive</span>
-                            // </Link>
+                            {/* <Link href="/active" className="submenu-item" >
+                                 <VscLayersActive className="icon" />
+                                 <span onClick={() => setMenuOpen(!menuOpen)}>Active/Inactive</span>
+                             </Link>*/}
                         </div>
                     )}
 
@@ -104,4 +104,5 @@ export default function Sidebar() {
         </>
     );
 }
+
 
