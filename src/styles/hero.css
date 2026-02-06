@@ -164,8 +164,9 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     text-align: center;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 
 /* Actions */
@@ -361,6 +362,15 @@
         margin-bottom: 20px;
     }
 
+    .admin-title2 {
+        font-size: 20px;
+    }
+
+    .admin-desc {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
     /* Form layout */
     .form {
         gap: 12px;
@@ -447,6 +457,15 @@
         padding: 0;
     }
 
+    .admin-title2 {
+        font-size: 18px;
+    }
+
+    .admin-desc {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
     .saree-list {
         padding: 0;
         grid-template-columns: repeat(2, 1fr);
@@ -478,3 +497,4 @@
     }
 
 }
+
