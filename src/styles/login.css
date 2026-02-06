@@ -208,7 +208,7 @@
     color: rgb(0, 0, 0);
     text-decoration: underline;
     cursor: pointer;
-    margin-top: -20px;
+    margin-top: -15px;
     /* border-style: dashed; */
 }
 
@@ -251,11 +251,16 @@
 @media (max-width: 768px) {
 
     /* Login Box */
+
+    .login-wrapper {
+        height: 80vh;
+    }
+
     .login-box {
-        flex-direction: column;
+        /* flex-direction: column; */
         width: 90%;
-        height: auto;
-        padding: 2rem;
+        height: 90%;
+        border-radius: 26px;
     }
 
     .Message-box,
@@ -267,7 +272,16 @@
 
     .login-btn,
     .signup {
-        width: 100%;
+        width: 95%;
+    }
+
+    .forgot-password {
+        font-size: 10px;
+        margin-top: -15px;
+    }
+
+    .login-lottie {
+        width: 10%;
     }
 }
 
@@ -278,8 +292,8 @@
     .login-box {
         /* align-items: center; */
         /* justify-content: center; */
-        width: 75%;
-        height: 50%;
+        width: 85%;
+        height: 60%;
         flex-direction: column;
         padding: 1.5rem;
     }
@@ -305,17 +319,17 @@
     }
 
     .main-content {
-        font-size: 50px;
-        text-align: center;
+        font-size: 20px;
+        /* text-align: center; */
     }
 
     .account {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .login-btn,
     .signup {
         font-size: 0.875rem;
-        padding: 0.5rem 1rem;
+        /* padding: 0.5rem 1rem; */
     }
 }
