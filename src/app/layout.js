@@ -18,6 +18,10 @@ export const metadata = {
   description: "Sarees Website's Admin Page",
 };
 
+export const viewport = {
+  themeColor: "#8b1e3f",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
