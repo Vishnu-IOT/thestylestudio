@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const DB_NAME = process.env.DB_NAME || "Saree"; // ⭐ default DB
+const DB_NAME = process.env.DB_NAME || "Sarees"; // ⭐ default DB
 
 if (!MONGODB_URI) {
   throw new Error("Please add MONGODB_URI in .env.local");
@@ -25,3 +25,4 @@ export async function connectDB() {
   cached.conn = await cached.promise;
   return cached.conn;
 }
+
